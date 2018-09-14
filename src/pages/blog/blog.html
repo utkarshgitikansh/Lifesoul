@@ -1,0 +1,31 @@
+<!-- <ion-content style="overflow-y: hidden;">
+<div *ngIf="bool">
+    <ion-list  *ngFor = "let item of doc"  >
+    <ion-item class="blog">
+      <h5>{{item.name}}</h5>
+      <h5 [innerHTML]="item.status"></h5>
+    </ion-item>   
+    
+  
+  </ion-list>
+
+</div>
+</ion-content> -->
+
+
+<meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes" />
+    
+
+      <ion-content style="overflow-y: hidden;">
+         
+            <li *ngFor = "let item of doc">
+               <div class="title">
+                      <h5>{{item.name}}</h5>
+                    </div>
+                      <div class="blog">
+                      <h5 [innerHTML]="item.status"></h5>
+               
+                    </div>     
+                  
+                </li>   
+      </ion-content>

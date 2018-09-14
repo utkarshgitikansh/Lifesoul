@@ -1,0 +1,41 @@
+ <ion-header>
+  <ion-navbar>
+    <ion-title>
+      Music
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+ <ion-content padding class="bg">
+
+   <!-- <ion-content> -->
+
+       <ion-fab >
+          <button ion-fab ion-fab color=#B22222>HEY!!</button>
+          <ion-fab-list side="center">
+            <button ion-fab>     <ion-icon *ngIf="!playing" (click)="playMusic()" name="play" ></ion-icon> </button>
+            <button ion-fab>        <ion-icon *ngIf="playing" (click)="pauseAudio(item)" name="pause"></ion-icon></button>
+          </ion-fab-list>
+</ion-fab>
+        <!-- <ion-icon *ngIf="!playing" (click)="playMusic()" name="play" ></ion-icon> 
+        <ion-icon *ngIf="playing" (click)="pauseAudio(item)" name="pause"></ion-icon>
+   -->
+      <!-- </ion-content>  -->
+
+     
+    <ion-list  *ngFor = "let item of final2.entries()" >
+        <ion-item (click)="startAudio(item)" >
+          <ion-thumbnail item-start>
+            <img src="assets/imgs/audio.png">
+          </ion-thumbnail>
+          <h5> </h5>
+          <h5>{{item[0]}}</h5>
+       
+
+        </ion-item>   
+        
+      
+      </ion-list>
+  
+    
+</ion-content> 

@@ -1,0 +1,67 @@
+.home{
+    background:color($colors, primary);
+    color:color($colors, light);
+    margin-top:30px;
+}
+.toolbar-title{
+    text-align: center;
+}
+
+.title_one,.icon, .desc{
+    text-align: left;
+}
+
+.updates{
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+.onBackPressed{
+    font-size: 15px;
+    margin-top: 15px;
+    
+}
+
+.bat, .bowl{
+    font-size: 15px;
+    margin-top: 15px;
+    
+}
+
+
+.cform {
+
+    text-align: center;
+    margin-top: 15px;
+
+}
+
+.toolbar-title{
+    text-align: center;
+}
+
+.tabs-md .tab-button-icon{
+    color:#ccc;
+}
+
+.temp{
+    font-size:90px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.location,.icon, .desc{
+    text-align: center;
+}
+
+.icon img{
+    width:100px;
+}
+
+.location{
+    font-size:40px;
+}
+
+.desc{
+    font-size:30px;
+}

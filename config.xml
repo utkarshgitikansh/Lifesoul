@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.lifesoul.gitikansh" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Lifesoul</name>
+    <description>
+        Multi utility app
+    </description>
+    <author email="ugitikansh@gmail.com" href="http://ionicframework.com/">
+      Utkarsh Gitikansh
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackupWebStorage" value="none" />
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+    </feature>
+    <feature name="Media">
+        <param name="android-package" onload="true" value="org.apache.cordova.media.AudioHandler" />
+    </feature>
+    <log level="DEBUG" />
+    <plugin name="cordova-plugin-audiometadata" spec="^1.1.0" />
+    <allow-navigation href="http://192.168.106.1:8100" />
+    <allow-navigation href="http://192.168.1.24:8100" />
+    <platform name="android">
+        <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
+        <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
+        <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
+        <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png" />
+        <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png" />
+        <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png" />
+    </platform>
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <plugin name="cordova-plugin-file" spec="~6.0.1" />
+    <plugin name="cordova-plugin-filechooser" spec="~1.0.1" />
+    <plugin name="cordova-plugin-advanced-http" spec="^2.0.1" />
+    <plugin name="cordova-plugin-background-mode" spec="^0.7.2" />
+    <plugin name="cordova-plugin-nativeaudio" spec="^3.0.9" />
+    <engine name="android" spec="6.1.0" />
+</widget>
