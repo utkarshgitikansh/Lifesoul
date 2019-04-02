@@ -1,7 +1,22 @@
 page-music {
-       .bg{
-           background: linear-gradient(to bottom, #000026 0%, #fff 100%);
-          
-         
-       }
+  .bg {
+    background: linear-gradient(to bottom, #000026 0%, #fff 100%);
+  }
+
+  #app-section {
+    #app-title {
+      color: color($colors, "primary");
+      text-transform: uppercase;
+    }
+    ion-icon {
+      font-size: 15rem;
+    }
+  }
+  #media-controls {
+    button {
+      ion-icon {
+        font-size: 2.5rem;
+      }
+    }
+  }
 }
