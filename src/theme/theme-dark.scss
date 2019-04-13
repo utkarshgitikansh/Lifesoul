@@ -1,0 +1,63 @@
+.theme-dark {
+  ion-content {
+    background-color: black;
+    color: #fff;
+  }
+
+  ion-card {
+    background-color: #1b2737;
+    color: #fff;
+  }
+  ion-card-title {
+    background-color: #1b2737;
+    color: #fff;
+  }
+
+  ion-card-header {
+    color: #fff;
+  }
+
+  ion-card-content {
+    color: #fff;
+  }
+
+  .tabs .tabbar,
+  .header .toolbar-background {
+    background-color: #1b2737;
+    border-color: #000;
+    color: #fff;
+  }
+
+  .h5 {
+    color: #fff;
+  }
+
+  .tabs .tabs-button-icon,
+  .tabs .tabs-button-text,
+  .toolbar-title {
+    color: #fff;
+  }
+
+  .tabs
+    .tabs-button[aria-selected="true"]
+    .tab-button-text[aria-selected="true"] {
+    color: #fff;
+  }
+
+  ion-item,
+  button.item {
+    background-color: #1b2737;
+    color: #fff;
+  }
+
+  .a {
+    color: white;
+    text-align: justify;
+    text-decoration-line: none;
+    font-size: 12px;
+  }
+
+  .ion-item {
+    color: white;
+  }
+}

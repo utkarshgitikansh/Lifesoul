@@ -13,7 +13,6 @@ export class WeatherPage {
   weather: any;
   location: {
     city: string;
-    state: string;
   };
 
   constructor(
@@ -25,23 +24,20 @@ export class WeatherPage {
       if (val != null) {
         let location = JSON.parse(val);
         this.city = location.city;
-        this.state = location.state;
       } else {
-        this.city = "Miami";
-        this.state = "FL";
+        this.city = "Noida";
       }
     });
   }
 
   saveForm() {
     let location = {
-      city: this.city,
-      state: this.state
+      city: this.city
     };
     this.storage.set("location", JSON.stringify(location));
 
     this.navCtrl.push(WeatherPage);
-    // this.navCtrl.remove(this);
+    this.navCtrl.pop;
   }
 
   ionViewWillEnter() {
@@ -50,16 +46,15 @@ export class WeatherPage {
         this.location = JSON.parse(val);
       } else {
         this.location = {
-          city: "Miami",
-          state: "FL"
+          city: "Noida"
         };
       }
 
-      this.weatherProvider
-        .getWeather(this.location.city, this.location.state)
-        .subscribe(weather => {
-          this.weather = weather.current_observation;
-        });
+      this.weatherProvider.getWeather(this.city).subscribe(w => {
+        this.weather = w;
+      });
     });
+
+    console.log(this.weather);
   }
 }

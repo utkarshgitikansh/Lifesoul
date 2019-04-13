@@ -1,20 +1,25 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Injectable } from "@angular/core";
+import { HttpHeaders } from "@angular/common/http";
+import { Http, RequestOptions } from "@angular/http";
+import { Headers } from "@angular/http";
+import "rxjs/add/operator/map";
 
 @Injectable()
 export class WeatherinfoProvider {
-  apiKey = '99dfe35fcb7de1ee';
   url;
 
   constructor(public http: Http) {
-    console.log('Hello WeatherProvider Provider');
-    this.url = 'http://api.wunderground.com/api/'+this.apiKey+'/conditions/q';
+    this.url =
+      "http://api.apixu.com/v1/current.json?key=e8f21b2e09284e35a1b152526191204&q=";
   }
 
-  getWeather(city, state){
-    return this.http.get(this.url+'/'+state+'/'+city+'.json')
-      .map(res => res.json());
-  }
+  getWeather(city) {
+    // var headers = new Headers();
 
+    // headers.append("Access-Control-Allow-Origin", "*");
+
+    // let options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.url + city).map(res => res.json());
+  }
 }

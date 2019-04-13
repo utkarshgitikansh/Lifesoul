@@ -1,3 +1,10 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Blog
+    </ion-title>
+  </ion-navbar>
+</ion-header>
 <!-- <ion-content style="overflow-y: hidden;">
 <div *ngIf="bool">
     <ion-list  *ngFor = "let item of doc"  >
@@ -12,20 +19,27 @@
 </div>
 </ion-content> -->
 
+<ion-spinner class="spinnerCenter" *ngIf="!bool" padding
+  >Fetching the awesome blogs !</ion-spinner
+>
+<ion-content margin-top="90px" *ngIf="bool">
+  <!-- <ion-card *ngFor="let item of doc">
+    <ion-card-header>
+      <ion-card-title>{{ item.name }}</ion-card-title>
+    </ion-card-header>
 
-<meta name="viewport" content ="width=device-width,initial-scale=1,user-scalable=yes" />
-    
-
-      <ion-content style="overflow-y: hidden;">
-         
-            <li *ngFor = "let item of doc">
-               <div class="title">
-                      <h5>{{item.name}}</h5>
-                    </div>
-                      <div class="blog">
-                      <h5 [innerHTML]="item.status"></h5>
-               
-                    </div>     
-                  
-                </li>   
-      </ion-content>
+    <ion-card-content>
+      <ion-item [innerHTML]="item.status"> </ion-item>
+    </ion-card-content>
+  </ion-card>  -->
+  <div padding>
+    <li *ngFor="let item of doc">
+      <div class="title">
+        <h5>{{ item.name }}</h5>
+      </div>
+      <div class="blog">
+        <h5 [innerHTML]="item.status"></h5>
+      </div>
+    </li>
+  </div>
+</ion-content>

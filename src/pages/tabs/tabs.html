@@ -1,10 +1,22 @@
+<ion-fab class="fabButton">
+  <button ion-fab mini><ion-icon name="settings"></ion-icon></button>
+  <ion-fab-list side="top">
+    <button ion-fab (click)="dayMode()">
+      <ion-icon name="sunny"></ion-icon>
+    </button>
+    <button ion-fab (click)="nightMode()">
+      <ion-icon name="moon"></ion-icon>
+    </button>
+  </ion-fab-list>
+</ion-fab>
 <ion-tabs>
   <ion-tab
     [root]="tab1Root"
     tabTitle="Music"
     tabIcon="md-musical-note"
   ></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Cricket" tabIcon="md-baseball"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Cricket" tabIcon="md-baseball">
+  </ion-tab>
   <ion-tab
     [root]="tab3Root"
     tabTitle="Weather"

@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Live score</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding text-wrap>
+  <ion-spinner class="spinnerCenter" *ngIf="!Sstatus"></ion-spinner>
+  <ion-card>
+    <ion-card-header class="a" text-wrap>
+      <ion-card-title> {{ teamA }} v {{ teamB }} </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content class="text-size">
+      <ion-item> Man of the match : {{ mom }} </ion-item>
+      <ion-item> Toss : {{ toss }} </ion-item>
+
+      <ion-row class="text_bold">
+        <ion-col> {{ teamA }} innings </ion-col>
+        <ion-col> Runs </ion-col>
+        <ion-col> Balls </ion-col>
+        <ion-col> 4s </ion-col>
+        <ion-col> 6s </ion-col>
+        <ion-col> SR </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of batstatA">
+        <ion-col>
+          {{ item["batsman"] }} ({{ item["dismissal-info"] || item["detail"] }})
+        </ion-col>
+        <ion-col> {{ item["R"] }} </ion-col>
+        <ion-col> {{ item["B"] }} </ion-col>
+        <ion-col> {{ item["4s"] }} </ion-col>
+        <ion-col> {{ item["6s"] }} </ion-col>
+        <ion-col> {{ item["SR"] }} </ion-col>
+      </ion-row>
+      <ion-row class="text_bold">
+        <ion-col> {{ teamB }} bowling </ion-col>
+        <ion-col> Overs </ion-col>
+        <ion-col> Runs </ion-col>
+        <ion-col> Maiden </ion-col>
+        <ion-col> Wickets </ion-col>
+        <ion-col> Economy </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of bowlstatB">
+        <ion-col>
+          {{ item["bowler"] }}
+        </ion-col>
+        <ion-col> {{ item["O"] }} </ion-col>
+        <ion-col> {{ item["R"] }} </ion-col>
+        <ion-col> {{ item["M"] }} </ion-col>
+        <ion-col> {{ item["W"] }} </ion-col>
+        <ion-col> {{ item["Econ"] }} </ion-col>
+      </ion-row>
+
+      <!-- Second Innings -->
+
+      <ion-row class="text_bold">
+        <ion-col> {{ teamB }} innings </ion-col>
+        <ion-col> Runs </ion-col>
+        <ion-col> Balls </ion-col>
+        <ion-col> 4s </ion-col>
+        <ion-col> 6s </ion-col>
+        <ion-col> SR </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of batstatB">
+        <ion-col>
+          {{ item["batsman"] }} ({{ item["dismissal-info"] || item["detail"] }})
+        </ion-col>
+        <ion-col> {{ item["R"] }} </ion-col>
+        <ion-col> {{ item["B"] }} </ion-col>
+        <ion-col> {{ item["4s"] }} </ion-col>
+        <ion-col> {{ item["6s"] }} </ion-col>
+        <ion-col> {{ item["SR"] }} </ion-col>
+      </ion-row>
+      <ion-row class="text_bold">
+        <ion-col> {{ teamA }} bowling </ion-col>
+        <ion-col> Overs </ion-col>
+        <ion-col> Runs </ion-col>
+        <ion-col> Maiden </ion-col>
+        <ion-col> Wickets </ion-col>
+        <ion-col> Economy </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of bowlstatA">
+        <ion-col>
+          {{ item["bowler"] }}
+        </ion-col>
+        <ion-col> {{ item["O"] }} </ion-col>
+        <ion-col> {{ item["R"] }} </ion-col>
+        <ion-col> {{ item["M"] }} </ion-col>
+        <ion-col> {{ item["W"] }} </ion-col>
+        <ion-col> {{ item["Econ"] }} </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

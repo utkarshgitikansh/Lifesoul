@@ -39,7 +39,7 @@
   </ion-fab-list>
 </ion-fab> -->
 
-<ion-content padding class="bg">
+<ion-content padding color="primary">
   <!-- <ion-content> 
 
  <ion-icon *ngIf="!playing" (click)="playMusic()" name="play" ></ion-icon> 
@@ -64,8 +64,7 @@
           <ion-thumbnail item-start>
             <img src="assets/imgs/audio.png" />
           </ion-thumbnail>
-          <h5>{{ item[0].replace(".mp3", "") }}</h5>
-          <h5>{{ audioList[1] }}</h5>
+          {{ item[0].replace(".mp3", "") }}
         </ion-item>
       </ion-list>
     </ion-card-content>

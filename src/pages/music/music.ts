@@ -1,20 +1,14 @@
 import {
   IonicPage,
   NavController,
-  NavParams,
   Platform,
   LoadingController
 } from "ionic-angular";
-import {
-  StreamingMedia,
-  StreamingVideoOptions,
-  StreamingAudioOptions
-} from "@ionic-native/streaming-media";
+import { StreamingMedia } from "@ionic-native/streaming-media";
 import { Media, MediaObject } from "@ionic-native/media";
 import { Component, NgZone } from "@angular/core";
 import { File } from "@ionic-native/file";
 import { Storage } from "@ionic/storage";
-import { AudioProvider } from "../../providers/audio/audio";
 import { BackgroundMode } from "@ionic-native/background-mode";
 import { NativeAudio } from "@ionic-native/native-audio";
 
@@ -43,7 +37,6 @@ export class MusicPage {
   playing: boolean = false;
   file1: MediaObject;
   music: any;
-  // test = Array<any>();
   audioList = new Map();
   nameAudio = Array<any>();
   Astatus: boolean = false;
@@ -99,128 +92,16 @@ export class MusicPage {
     //   }
     // });
     this.set();
-    //this.file.checkDir( this.file.externalRootDirectory, 'Download').then(_ => alert('Directory exists')).catch(err => alert('Directory doesn\'t exist'));
-
-    //  this.storage.get('location').then((val) => {
-    //   if(val != null){
-    //      this.final2 = val;
-    //   } else {
-    //     alert('Oops! The playlist could not be loaded!!');
-    //     // this.listagain('file:///','sdcard');
-    //     //this.storage.set('location', this.arr);
-    //   }
-    // });
-
-    // --->  this.listagain('file:///','sdcard');
-
-    // --> this.final2= this.arr;
-    // this.listagain('file:///','storage');
-    // this.final = this.arr;
-
-    //alert(parts.nativeURL);
   }
-  //}
   set() {
-    // this.audio.set();
-
-    // this.listagain(this.file.externalRootDirectory, "Download");
-    // this.listagain(this.file.externalRootDirectory, "Music");
-    // this.listagain(this.file.externalRootDirectory, "Audio");
-    // this.final2 = this.arr;
-
-    //  this.storage.set("audios", this.test);
     this.storage.get("audios").then(val => {
       if (val != null) {
         this.music.push(val.name);
       } else {
         alert("Oops! The playlist could not be loaded!!");
-        // this.listagain('file:///','sdcard');
-        //this.storage.set('location', this.arr);
       }
     });
-    //this.Astatus = true;
-    //alert(this.final2.entries.length);
-    // this.storage.set('location', this.arr);
-
-    //   this.storage.set('location', this.final);
   }
-
-  //   listRootDir = () => {
-
-  //   const ROOT_DIRECTORY = "file:///";
-
-  //   (<any> window).resolveLocalFileSystemURL(ROOT_DIRECTORY,
-  //     (fileSystem) => {
-
-  //       var reader = fileSystem.createReader();
-  //       reader.readEntries(
-  //         (entries) => {
-  //           this.ngZone.run(()=> {
-  //             this.items = entries;
-  //           });
-  //         }, this.handleError);
-  //     }, this.handleError);
-  // }
-
-  // handleError = (error) => {
-  //   console.log('error reading,', error)
-  // };
-
-  // goDown = (item) => {
-
-  //   let childName = this.items[0].name;
-  //   let childNativeURL = this.items[0].nativeURL;
-
-  //   const parentNativeURL = childNativeURL.replace(childName, '');
-
-  //   this.savedParentNativeURLs.push(parentNativeURL);
-
-  //   var reader = item.createReader();
-  //   alert(parentNativeURL);
-  //   reader.readEntries(
-  //     (children) => {
-  //       this.ngZone.run(()=> {
-  //         this.items = children;
-  //       })
-  //     }, this.handleError);
-  // }
-
-  // hide = (item) => {
-
-  // item = item.hide;
-
-  // }
-
-  // goUp = () => {
-
-  //   const parentNativeURL = this.savedParentNativeURLs.pop();
-
-  //   (<any> window).resolveLocalFileSystemURL(parentNativeURL,
-  //     (fileSystem) => {
-
-  //       var reader = fileSystem.createReader();
-
-  //       reader.readEntries(
-  //         (entries) => {
-  //           this.ngZone.run(()=> {
-  //             this.items = entries;
-  //           })
-  //         }, this.handleError);
-  //     }, this.handleError);
-  // }
-
-  // startAudio = (item) => {
-
-  // let options: StreamingAudioOptions = {
-  //     successCallback: () => { console.log('Finished Audio') },
-  //     errorCallback: (e) => { console.log('Error: ', e) },
-
-  //     initFullscreen: false // iOS only!
-  //   };
-
-  //   this.streamingMedia.playAudio(item[1], options);
-
-  // }
 
   proAudio = (item, i) => {
     this.startAudio(item);
@@ -247,11 +128,6 @@ export class MusicPage {
     file.play();
     this.playing = true;
     this.file1 = file;
-    //this.storage.set("music", JSON.stringify(this.file1));
-
-    // this.playMusic(file);
-
-    // this.playMusic(this.file1);
   };
   playMusic = item => {
     if (this.file1 == null) alert("Please select a song !!");
@@ -267,17 +143,8 @@ export class MusicPage {
     //     alert("please select a song!!");
     //         }
     // });
-
-    // if(this.playing)
-    // this.file1.release();
-    // item.play();
-    // this.playList = true;
-    // this.playing = true;
   };
 
-  alertItem = item => {
-    this.startAudio(item);
-  };
   pauseAudio() {
     this.file1.pause();
 

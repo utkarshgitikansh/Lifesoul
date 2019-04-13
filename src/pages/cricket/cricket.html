@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Sports
+      Cricket
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,211 +9,294 @@
 <ion-fab>
   <button ion-fab mini><ion-icon name="add"></ion-icon></button>
   <ion-fab-list>
-    <button ion-fab (click)="startAudio(item)"><ion-icon name="play"></ion-icon></button>
+    <button ion-fab (click)="startAudio(item)">
+      <ion-icon name="play"></ion-icon>
+    </button>
     <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
     <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
     <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
   </ion-fab-list>
 </ion-fab>
 
-  <ion-content padding class="home">
-    <ion-grid>
-      <ion-row>
-        <ion-col >
-          <h2 class="title_one">Cricket</h2>
-          <h3 class="updates">Recent Matches:</h3>
-          <div class="matches">
-              <br/>
-          <b>{{team1}} v {{team2}} {{mtype}}</b><br/>
-             {{teamW}} won the match.
-             <br/>
-             <br/>
-          <b>{{team3}} v {{team4}} {{mtype2}}</b><br/>
-             {{teamW2}} won the match.
-             <br/>
-             <br/>
-             <b>{{team5}} v {{team6}} {{mtype3}}</b><br/>
-                {{teamW3}} won the match.
-                <br/>
-                
-          </div>
-          <div  class="updates" *ngIf="form">
+<ion-content padding class="slide" text-wrap>
+  <ion-card>
+    <ion-slides>
+      <ion-slide *ngFor="let a of current; let i = index" (click)="scoreIt(i)">
+        <ion-card-header>
+          <ion-card-title>Recent Matches:</ion-card-title>
+        </ion-card-header>
 
-            <form class="cform" (ngSubmit)="saveCPlayer()">
+        <ion-card-content>
+          <ion-item class="text-size">
+            <ion-row>
+              <ion-col>
+                {{ current[i]["dateTimeGMT"] }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                {{ current[i]["team-1"] }} v {{ current[i]["team-2"] }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                {{ current[i]["type"] }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col> {{ current[i]["winner_team"] }} won the match </ion-col>
+            </ion-row>
+          </ion-item>
+        </ion-card-content>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+
+  <ion-card>
+    <ion-slides>
+      <ion-slide *ngFor="let a of upcoming; let i = index" (click)="alert()">
+        <ion-card-header>
+          <ion-card-title>Upcoming Matches:</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content class="text-size">
+          <ion-item>
+            <ion-row>
+              <ion-col>
+                {{ upcoming[i]["dateTimeGMT"] }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                {{ upcoming[i]["team-1"] }} v {{ upcoming[i]["team-2"] }}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                {{ upcoming[i]["type"] }}
+              </ion-col>
+            </ion-row>
+          </ion-item>
+        </ion-card-content>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+</ion-content>
+<!-- <ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title></ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content *ngFor="let a of matches; let i = index">
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            {{ matches[i]["team-1"] }} v {{ matches[i]["team-2"] }}
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-card-content>
+  </ion-card> -->
+<!-- </ion-content> -->
+
+<!-- <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2 class="title_one">Cricket</h2>
+        <h3 class="updates">Recent Matches:</h3>
+        <div class="matches">
+          <br />
+          <b>{{ team1 }} v {{ team2 }} {{ mtype }}</b
+          ><br />
+          {{ teamW }} won the match.
+          <br />
+          <br />
+          <b>{{ team3 }} v {{ team4 }} {{ mtype2 }}</b
+          ><br />
+          {{ teamW2 }} won the match.
+          <br />
+          <br />
+          <b>{{ team5 }} v {{ team6 }} {{ mtype3 }}</b
+          ><br />
+          {{ teamW3 }} won the match.
+          <br />
+        </div>
+        <div class="updates" *ngIf="form">
+          <form class="cform" (ngSubmit)="saveCPlayer()">
             <ion-item>
               <ion-label fixed>
                 Player Name:
               </ion-label>
-              <ion-input [(ngModel)]="cplayer" name="cplayer" type="text"></ion-input>
+              <ion-input
+                [(ngModel)]="cplayer"
+                name="cplayer"
+                type="text"
+              ></ion-input>
             </ion-item>
             <button ion-button type="submit" block>Search</button>
           </form>
         </div>
 
-        <div  class="onBackPressed" *ngIf="!form">
-          <div  class="bat" *ngIf="bat">
-          <ion-grid >
-             
-                  {{cplayer}}
-           
-            <ion-row>
-                <ion-col >
-                    Stats
-                  </ion-col>
-              <ion-col >
-                Matches
-              </ion-col>
-              <ion-col >
-                Runs
-              </ion-col>
-              <ion-col >
-                Average
-              </ion-col>
-              <ion-col >
-                100s
-              </ion-col>
-            </ion-row>
+        <div class="onBackPressed" *ngIf="!form">
+          <div class="bat" *ngIf="bat">
+            <ion-grid>
+              {{ cplayer }}
 
-            <ion-row>
-                <ion-col >
-                    ODIs
-                  </ion-col>
-                <ion-col >
-                    {{omatches}}
+              <ion-row>
+                <ion-col>
+                  Stats
                 </ion-col>
-                <ion-col >
-                  {{oruns}}
+                <ion-col>
+                  Matches
                 </ion-col>
-                <ion-col >
-                    {{oaverage}}
+                <ion-col>
+                  Runs
                 </ion-col>
-                <ion-col >
-                    {{ocenturies}}
+                <ion-col>
+                  Average
+                </ion-col>
+                <ion-col>
+                  100s
                 </ion-col>
               </ion-row>
 
               <ion-row>
-                  <ion-col >
-                      Tests
-                    </ion-col>
-                  <ion-col >
-                      {{tmatches}}
-                  </ion-col>
-                  <ion-col >
-                    {{truns}}
-                  </ion-col>
-                  <ion-col >
-                      {{taverage}}
-                  </ion-col>
-                  <ion-col >
-                      {{tcenturies}}
-                  </ion-col>
-                </ion-row>
+                <ion-col>
+                  ODIs
+                </ion-col>
+                <ion-col>
+                  {{ omatches }}
+                </ion-col>
+                <ion-col>
+                  {{ oruns }}
+                </ion-col>
+                <ion-col>
+                  {{ oaverage }}
+                </ion-col>
+                <ion-col>
+                  {{ ocenturies }}
+                </ion-col>
+              </ion-row>
 
-                <ion-row>
-                    <ion-col >
-                        T20Is
-                      </ion-col>
-                    <ion-col >
-                        {{twmatches}}
-                    </ion-col>
-                    <ion-col >
-                      {{twruns}}
-                    </ion-col>
-                    <ion-col >
-                        {{twaverage}}
-                    </ion-col>
-                    <ion-col >
-                        {{twcenturies}}
-                    </ion-col>
-                  </ion-row>
+              <ion-row>
+                <ion-col>
+                  Tests
+                </ion-col>
+                <ion-col>
+                  {{ tmatches }}
+                </ion-col>
+                <ion-col>
+                  {{ truns }}
+                </ion-col>
+                <ion-col>
+                  {{ taverage }}
+                </ion-col>
+                <ion-col>
+                  {{ tcenturies }}
+                </ion-col>
+              </ion-row>
 
-          </ion-grid>
-        </div>
-        <div  class="bowl" *ngIf="!bat">
-          <ion-grid>
-             
-            {{cplayer}}
-     
-      <ion-row>
-          <ion-col >
-              Stats
-            </ion-col>
-        <ion-col >
-          Matches
-        </ion-col>
-        <ion-col >
-          Wickets
-        </ion-col>
-        <ion-col >
-          Average
-        </ion-col>
-        <ion-col >
-          5w
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-          <ion-col >
-              ODIs
-            </ion-col>
-          <ion-col >
-              {{obmatches}}
-          </ion-col>
-          <ion-col >
-            {{obwkts}}
-          </ion-col>
-          <ion-col >
-              {{obaverage}}
-          </ion-col>
-          <ion-col >
-              {{ofive}}
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-            <ion-col >
-                Tests
-              </ion-col>
-            <ion-col >
-                {{tbmatches}}
-            </ion-col>
-            <ion-col >
-              {{tbwkts}}
-            </ion-col>
-            <ion-col >
-                {{tbaverage}}
-            </ion-col>
-            <ion-col >
-                {{tfive}}
-            </ion-col>
-          </ion-row>
-
-          <ion-row>
-              <ion-col >
+              <ion-row>
+                <ion-col>
                   T20Is
                 </ion-col>
-              <ion-col >
-                  {{twbmatches}}
-              </ion-col>
-              <ion-col >
-                {{twbwkts}}
-              </ion-col>
-              <ion-col >
-                  {{twbaverage}}
-              </ion-col>
-              <ion-col >
-                  {{twfive}}
-              </ion-col>
-            </ion-row>
+                <ion-col>
+                  {{ twmatches }}
+                </ion-col>
+                <ion-col>
+                  {{ twruns }}
+                </ion-col>
+                <ion-col>
+                  {{ twaverage }}
+                </ion-col>
+                <ion-col>
+                  {{ twcenturies }}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <div class="bowl" *ngIf="!bat">
+            <ion-grid>
+              {{ cplayer }}
 
-    </ion-grid>
-  </div>
-          <button ion-button type="submit" (click)='onBackPressed();' block>Back</button>
+              <ion-row>
+                <ion-col>
+                  Stats
+                </ion-col>
+                <ion-col>
+                  Matches
+                </ion-col>
+                <ion-col>
+                  Wickets
+                </ion-col>
+                <ion-col>
+                  Average
+                </ion-col>
+                <ion-col>
+                  5w
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  ODIs
+                </ion-col>
+                <ion-col>
+                  {{ obmatches }}
+                </ion-col>
+                <ion-col>
+                  {{ obwkts }}
+                </ion-col>
+                <ion-col>
+                  {{ obaverage }}
+                </ion-col>
+                <ion-col>
+                  {{ ofive }}
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  Tests
+                </ion-col>
+                <ion-col>
+                  {{ tbmatches }}
+                </ion-col>
+                <ion-col>
+                  {{ tbwkts }}
+                </ion-col>
+                <ion-col>
+                  {{ tbaverage }}
+                </ion-col>
+                <ion-col>
+                  {{ tfive }}
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  T20Is
+                </ion-col>
+                <ion-col>
+                  {{ twbmatches }}
+                </ion-col>
+                <ion-col>
+                  {{ twbwkts }}
+                </ion-col>
+                <ion-col>
+                  {{ twbaverage }}
+                </ion-col>
+                <ion-col>
+                  {{ twfive }}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <button ion-button type="submit" (click)="onBackPressed()" block>
+            Back
+          </button>
         </div>
-
-        </ion-col>
-      </ion-row>
-      </ion-grid>
-  
-</ion-content>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
